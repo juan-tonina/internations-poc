@@ -1,0 +1,82 @@
+/**
+ * Created by Juan on 15/02/2016.
+ */
+const React = require('react');
+const ReactPropTypes = React.PropTypes;
+const UserActions = require('../../actions/UserActions');
+const UserTextInput = require('../UserInput/UserInput');
+
+const classNames = require('classnames');
+
+const UserItem = React.createClass({
+
+  propTypes: {
+    user: ReactPropTypes.object.isRequired,
+  },
+
+  getInitialState() {
+    return {
+      isEditing: false,
+    };
+  },
+
+  _onToggleComplete() {
+    UserActions.toggleComplete(this.props.user);
+  },
+
+  _onDoubleClick() {
+    this.setState({isEditing: true});
+  },
+
+  _onSave(text) {
+    UserActions.updateText(this.props.user.id, text);
+    this.setState({isEditing: false});
+  },
+
+  _onDestroyClick() {
+    UserActions.destroy(this.props.user.id);
+  },
+
+  /**
+   * @return {object}
+   */
+  render() {
+    const user = this.props.user;
+
+    let input;
+    if (this.state.isEditing) {
+      input =
+        (<UserTextInput
+          className="edit"
+          onSave={this._onSave}
+          value={user.text}
+        />);
+    }
+
+    return (
+      <li
+        className={classNames({
+          'completed': user.complete,
+          'editing': this.state.isEditing,
+        })}
+        key={user.id}>
+        <div className="view">
+          <input
+            className="toggle"
+            type="checkbox"
+            checked={user.complete}
+            onChange={this._onToggleComplete}
+          />
+          <label onDoubleClick={this._onDoubleClick}>
+            {user.text}
+          </label>
+          <button className="destroy" onClick={this._onDestroyClick}/>
+        </div>
+        {input}
+      </li>
+    );
+  },
+
+});
+
+module.exports = UserItem;
