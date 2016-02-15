@@ -55,15 +55,8 @@ function destroy(id) {
 
 const GroupStore = assign({}, EventEmitter.prototype, {
 
-  areAllComplete() {
-    for (const id in _groups) {
-      if (_groups.hasOwnProperty(id)) {
-        if (!_groups[id].complete) {
-          return false;
-        }
-      }
-    }
-    return true;
+  addUser(group, user) {
+    _groups[group].users.push(user);
   },
 
   /**

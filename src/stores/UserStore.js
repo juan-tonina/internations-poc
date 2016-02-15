@@ -1,6 +1,7 @@
 const AppDispatcher = require('../../src/core/Dispatcher');
 const EventEmitter = require('events').EventEmitter;
 const UserConstants = require('../constants/UserConstants');
+const GroupStore = require('../stores/GroupStore');
 const assign = require('object-assign');
 
 const CHANGE_EVENT = 'change';
@@ -11,12 +12,13 @@ const _users = {};
  * Create a User.
  * @param  {string} text The username of the User
  */
-function create(text) {
+function create(text, group) {
   const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
   _users[id] = {
     id: id,
     text: text,
   };
+  GroupStore.addUser(group, _users[id]);
 }
 
 /**
@@ -99,7 +101,7 @@ AppDispatcher.register((action) => {
     case UserConstants.USER_CREATE:
       text = action.text.trim();
       if (text !== '') {
-        create(text);
+        create(text, action.group);
         UserStore.emitChange();
       }
       break;

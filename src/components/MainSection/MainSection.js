@@ -15,9 +15,9 @@ const MainSection = React.createClass({
   _onToggleCompleteAll() {
     UserActions.toggleCompleteAll();
   },
-  _onSave(text) {
+  _onSave(text, group) {
     if (text.trim()) {
-      UserActions.create(text);
+      UserActions.create(text, group);
     }
   },
   _onSaveGroup(text) {

@@ -5,11 +5,13 @@ const UserActions = {
 
   /**
    * @param  {string} text
+   * @param group
    */
-  create(text) {
+  create(text, group) {
     AppDispatcher.dispatch({
       actionType: UserConstants.USER_CREATE,
-      text: text,
+      text,
+      group,
     });
   },
 

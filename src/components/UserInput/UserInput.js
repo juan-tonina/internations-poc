@@ -29,10 +29,9 @@ const UserInput = React.createClass({
    * used in different ways.
    */
   _save() {
-    this.props.onSave(this.state.value, this.state.group);
+    this.props.onSave(this.state.value, this.props.group);
     this.setState({
       value: '',
-      group: this.state.group,
     });
   },
 
@@ -42,7 +41,6 @@ const UserInput = React.createClass({
   _onChange(event) {
     this.setState({
       value: event.target.value,
-      group: event.target.group,
     });
   },
 
@@ -69,7 +67,7 @@ const UserInput = React.createClass({
         onChange={this._onChange}
         onKeyDown={this._onKeyDown}
         value={this.state.value}
-        group={this.state.group}
+        group={this.props.group}
         autoFocus={true}
       />
     );
