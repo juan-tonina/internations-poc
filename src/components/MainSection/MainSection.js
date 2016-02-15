@@ -1,46 +1,59 @@
 const React = require('react');
 const ReactPropTypes = React.PropTypes;
 const UserActions = require('../../actions/UserActions');
+const GroupActions = require('../../actions/GroupActions');
 const UserItem = require('../User/User');
+const UserInput = require('../UserInput/UserInput');
+const GroupInput = require('../GroupInput/GroupInput');
 
 const MainSection = React.createClass({
 
   propTypes: {
-    allUsers: ReactPropTypes.object.isRequired,
-    areAllComplete: ReactPropTypes.bool.isRequired
+    groupStore: ReactPropTypes.object.isRequired,
   },
 
   _onToggleCompleteAll() {
     UserActions.toggleCompleteAll();
   },
-
+  _onSave(text) {
+    if (text.trim()) {
+      UserActions.create(text);
+    }
+  },
+  _onSaveGroup(text) {
+    if (text.trim()) {
+      GroupActions.create(text);
+    }
+  },
 
   /**
    * @return {object}
    */
   render() {
-    if (Object.keys(this.props.allUsers).length < 1) {
-      return null;
+    let byGroup;
+    if (Object.keys(this.props.groupStore.getAll()).length < 1) {
+      return (<GroupInput id="new-group" placeholder="Create group" onSave={this._onSaveGroup}/>);
     }
 
-    const allUsers = this.props.allUsers;
+    const groupStore = this.props.groupStore;
     const users = [];
 
-    for (const key in allUsers) {
-      if (allUsers.hasOwnProperty(key)) {
-        users.push(<UserItem key={key} user={allUsers[key]}/>);
+    const all = groupStore.getAll();
+    for (const group in all) {
+      if (all.hasOwnProperty(group)) {
+        users.push(<li>{all[group].text}</li>);
+        byGroup = groupStore.getByGroup(group);
+        for (const key in byGroup.users) {
+          if (byGroup.hasOwnProperty(key)) {
+            users.push(<UserItem key={key} user={byGroup[key]}/>);
+          }
+        }
+        users.push(<UserInput group={group} id="new-user" placeholder="Username" onSave={this._onSave}/>);
       }
     }
 
     return (
       <section id="main">
-        <input
-          id="toggle-all"
-          type="checkbox"
-          onChange={this._onToggleCompleteAll}
-          checked={this.props.areAllComplete ? 'checked' : ''}
-        />
-        <label htmlFor="toggle-all">Mark all as complete</label>
         <ul id="user-list">{users}</ul>
       </section>
     );

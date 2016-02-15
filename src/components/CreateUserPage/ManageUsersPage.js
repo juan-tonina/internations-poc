@@ -1,13 +1,12 @@
 const MainSection = require('../MainSection');
-const UserActions = require('../../actions/UserActions');
-const UserInput = require('../UserInput');
 const React = require('react');
 const UserStore = require('../../stores/UserStore');
+const GroupStore = require('../../stores/GroupStore');
 
 function getUserState() {
   return {
     allUsers: UserStore.getAll(),
-    areAllComplete: UserStore.areAllComplete(),
+    groupStore: GroupStore,
   };
 }
 
@@ -19,10 +18,12 @@ const MyApp = React.createClass({
 
   componentDidMount() {
     UserStore.addChangeListener(this._onChange);
+    GroupStore.addChangeListener(this._onChangeGroup);
   },
 
   componentWillUnmount() {
     UserStore.removeChangeListener(this._onChange);
+    GroupStore.removeChangeListener(this._onChangeGroup);
   },
 
   /**
@@ -31,26 +32,19 @@ const MyApp = React.createClass({
   _onChange() {
     this.setState(getUserState());
   },
-
-
-  _onSave(text) {
-    if (text.trim()) {
-      UserActions.create(text);
-    }
+  _onChangeGroup() {
+    this.setState(getUserState());
   },
+
 
   render() {
     return (
       <div>
         <MainSection
           allUsers={this.state.allUsers}
-          areAllComplete={this.state.areAllComplete}
+          groupStore={this.state.groupStore}
         />
-        <UserInput
-          id="new-user"
-          placeholder="Username"
-          onSave={this._onSave}
-        />
+
       </div>
     );
   },

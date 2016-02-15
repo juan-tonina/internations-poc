@@ -6,7 +6,7 @@ const ReactPropTypes = React.PropTypes;
 
 const ENTER_KEY_CODE = 13;
 
-const UserInput = React.createClass({
+const GroupInput = React.createClass({
 
   propTypes: {
     className: ReactPropTypes.string,
@@ -69,11 +69,10 @@ const UserInput = React.createClass({
         onChange={this._onChange}
         onKeyDown={this._onKeyDown}
         value={this.state.value}
-        group={this.state.group}
         autoFocus={true}
       />
     );
   },
 });
 
-module.exports = UserInput;
+module.exports = GroupInput;

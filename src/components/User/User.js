@@ -20,10 +20,6 @@ const UserItem = React.createClass({
     };
   },
 
-  _onToggleComplete() {
-    UserActions.toggleComplete(this.props.user);
-  },
-
   _onDoubleClick() {
     this.setState({isEditing: true});
   },
@@ -61,12 +57,6 @@ const UserItem = React.createClass({
         })}
         key={user.id}>
         <div className="view">
-          <input
-            className="toggle"
-            type="checkbox"
-            checked={user.complete}
-            onChange={this._onToggleComplete}
-          />
           <label onDoubleClick={this._onDoubleClick}>
             {user.text}
           </label>

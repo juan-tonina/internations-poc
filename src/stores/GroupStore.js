@@ -1,62 +1,64 @@
 const AppDispatcher = require('../../src/core/Dispatcher');
 const EventEmitter = require('events').EventEmitter;
-const UserConstants = require('../constants/UserConstants');
+const GroupConstants = require('../constants/GroupConstants');
 const assign = require('object-assign');
 
 const CHANGE_EVENT = 'change';
 
-const _users = {};
+const _groups = {};
 
 /**
- * Create a User.
- * @param  {string} text The username of the User
+ * Create a Group.
+ * @param  {string} text The name of the Group
  */
 function create(text) {
   const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-  _users[id] = {
+  _groups[id] = {
     id: id,
+    users: [],
     text: text,
   };
 }
 
 /**
- * Update a User.
+ * Update a Group.
  * @param  {string} id
  * @param {object} updates An object literal containing only the data to be
  *     updated.
  */
 function update(id, updates) {
-  _users[id] = assign({}, _users[id], updates);
+  _groups[id] = assign({}, _groups[id], updates);
 }
 
 /**
- * Update all of the Users with the same object.
+ * Update all of the Groups with the same object.
  * @param  {object} updates An object literal containing only the data to be
  *     updated.
  */
 function updateAll(updates) {
-  for (const id in _users) {
-    if (_users.hasOwnProperty(id)) {
+  for (const id in _groups) {
+    if (_groups.hasOwnProperty(id)) {
       update(id, updates);
     }
   }
 }
 
 /**
- * Delete a User.
+ * Delete a Group.
  * @param  {string} id
  */
 function destroy(id) {
-  delete _users[id];
+  if (!_groups[id].users.length) {
+    delete _groups[id];
+  }
 }
 
-
-const UserStore = assign({}, EventEmitter.prototype, {
+const GroupStore = assign({}, EventEmitter.prototype, {
 
   areAllComplete() {
-    for (const id in _users) {
-      if (_users.hasOwnProperty(id)) {
-        if (!_users[id].complete) {
+    for (const id in _groups) {
+      if (_groups.hasOwnProperty(id)) {
+        if (!_groups[id].complete) {
           return false;
         }
       }
@@ -65,11 +67,15 @@ const UserStore = assign({}, EventEmitter.prototype, {
   },
 
   /**
-   * Get the entire collection of Users.
+   * Get the entire collection of Groups.
    * @return {object}
    */
   getAll() {
-    return _users;
+    return _groups;
+  },
+
+  getByGroup(groupId) {
+    return _groups[groupId];
   },
 
   emitChange() {
@@ -96,50 +102,49 @@ AppDispatcher.register((action) => {
   let text;
 
   switch (action.actionType) {
-    case UserConstants.USER_CREATE:
+    case GroupConstants.GROUP_CREATE:
       text = action.text.trim();
       if (text !== '') {
         create(text);
-        UserStore.emitChange();
+        GroupStore.emitChange();
       }
       break;
 
-    case UserConstants.USER_TOGGLE_COMPLETE_ALL:
-      if (UserStore.areAllComplete()) {
+    case GroupConstants.GROUP_TOGGLE_COMPLETE_ALL:
+      if (GroupStore.areAllComplete()) {
         updateAll({complete: false});
       } else {
         updateAll({complete: true});
       }
-      UserStore.emitChange();
+      GroupStore.emitChange();
       break;
 
-    case UserConstants.USER_UNDO_COMPLETE:
+    case GroupConstants.GROUP_UNDO_COMPLETE:
       update(action.id, {complete: false});
-      UserStore.emitChange();
+      GroupStore.emitChange();
       break;
 
-    case UserConstants.USER_COMPLETE:
+    case GroupConstants.GROUP_COMPLETE:
       update(action.id, {complete: true});
-      UserStore.emitChange();
+      GroupStore.emitChange();
       break;
 
-    case UserConstants.USER_UPDATE_TEXT:
+    case GroupConstants.GROUP_UPDATE_TEXT:
       text = action.text.trim();
       if (text !== '') {
         update(action.id, {text: text});
-        UserStore.emitChange();
+        GroupStore.emitChange();
       }
       break;
 
-    case UserConstants.USER_DESTROY:
+    case GroupConstants.GROUP_DESTROY:
       destroy(action.id);
-      UserStore.emitChange();
+      GroupStore.emitChange();
       break;
-
 
     default:
     // no op
   }
 });
 
-module.exports = UserStore;
+module.exports = GroupStore;
