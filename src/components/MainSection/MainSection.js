@@ -44,8 +44,8 @@ const MainSection = React.createClass({
         users.push(<li>{all[group].text}</li>);
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
-          if (byGroup.hasOwnProperty(key)) {
-            users.push(<UserItem key={key} user={byGroup[key]}/>);
+          if (byGroup.users.hasOwnProperty(key)) {
+            users.push(<UserItem key={key} user={byGroup.users[key]}/>);
           }
         }
         users.push(<UserInput group={group} id="new-user" placeholder="Username" onSave={this._onSave}/>);
@@ -54,7 +54,7 @@ const MainSection = React.createClass({
 
     return (
       <section id="main">
-        <ul id="user-list">{users}</ul>
+        <ul style={{'listStyle': '', 'left': '45%', 'position': 'relative'}} id="user-list">{users}</ul>
       </section>
     );
   },
