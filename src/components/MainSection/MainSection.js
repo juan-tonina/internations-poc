@@ -32,7 +32,7 @@ const MainSection = React.createClass({
   render() {
     let byGroup;
     if (Object.keys(this.props.groupStore.getAll()).length < 1) {
-      return (<GroupInput id="new-group" placeholder="Create group" onSave={this._onSaveGroup}/>);
+      return (<GroupInput style={{'listStyle': '', 'left': '45%', 'position': 'relative'}} id="new-group" placeholder="Create group" onSave={this._onSaveGroup}/>);
     }
 
     const groupStore = this.props.groupStore;

@@ -47,7 +47,7 @@ This POC was created using [react-starter-kit](https://github.com/kriasoft/react
 Just clone the repo and start hacking:
 
 ```shell
-$ git clone https://github.com/juan.tonina/react-poc.git MyApp
+$ git clone https://github.com/juan-tonina/internations-poc.git MyApp
 $ cd MyApp
 $ npm install                   # Install Node.js components listed in ./package.json
 $ npm start                     # Compile and launch
