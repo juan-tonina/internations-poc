@@ -60,6 +60,7 @@ const UserInput = React.createClass({
   render() {
     return (
       <input
+        style={{'marginTop': '5%', 'width': '30%', 'left': '34%'}}
         className={this.props.className}
         id={this.props.id}
         placeholder={this.props.placeholder}

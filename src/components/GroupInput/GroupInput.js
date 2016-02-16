@@ -61,17 +61,19 @@ const GroupInput = React.createClass({
    */
   render() {
     return (
-      <input
-        className={this.props.className}
-        id={this.props.id}
-        placeholder={this.props.placeholder}
-        onBlur={this._save}
-        onChange={this._onChange}
-        onKeyDown={this._onKeyDown}
-        value={this.state.value}
-        autoFocus={true}
-      />
-    );
+      // I know, inline styles are a bad practice, but I didn't want to lose time with this :)
+      <section style={{'minHeight': '500px'}}>
+        <input style={{'marginTop': '5%', 'width': '30%', 'left': '34%', 'position': 'relative'}}
+               className={this.props.className}
+               id={this.props.id}
+               placeholder={this.props.placeholder}
+               onBlur={this._save}
+               onChange={this._onChange}
+               onKeyDown={this._onKeyDown}
+               value={this.state.value}
+               autoFocus={true}
+        />
+      </section>);
   },
 });
 

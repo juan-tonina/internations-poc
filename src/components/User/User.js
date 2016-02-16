@@ -49,8 +49,9 @@ const UserItem = React.createClass({
         />);
     }
 
+    // I know, I know, inline styles...
     return (
-      <li
+      <li style={{'marginLeft': '30px'}}
         className={classNames({
           'completed': user.complete,
           'editing': this.state.isEditing,

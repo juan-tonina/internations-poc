@@ -32,29 +32,39 @@ const MainSection = React.createClass({
   render() {
     let byGroup;
     if (Object.keys(this.props.groupStore.getAll()).length < 1) {
-      return (<GroupInput style={{'listStyle': '', 'left': '45%', 'position': 'relative'}} id="new-group" placeholder="Create group" onSave={this._onSaveGroup}/>);
+      return (<GroupInput id="new-group"
+                          placeholder="Create group" onSave={this._onSaveGroup}/>);
     }
 
     const groupStore = this.props.groupStore;
     const users = [];
 
     const all = groupStore.getAll();
+    /**
+     * This is going to iterate through groups and users. I don't really like to iterate using for..in,
+     * but here it seemed cleaner. (I know that iterating over arrays with for..in not only is slower tan regular
+     * for loops, but in v8 it can cause the whole function to not be optimized)
+     */
     for (const group in all) {
       if (all.hasOwnProperty(group)) {
-        users.push(<li>{all[group].text}</li>);
+        users.push(<li key={group} style={{'listStyle': 'none'}}>{'->' + all[group].text}</li>);
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
           if (byGroup.users.hasOwnProperty(key)) {
-            users.push(<UserItem key={key} user={byGroup.users[key]}/>);
+            users.push(<UserItem key={key + group} user={byGroup.users[key]}/>);
           }
         }
-        users.push(<UserInput group={group} id="new-user" placeholder="Username" onSave={this._onSave}/>);
+        users.push(<UserInput key={'_' + group} group={group} id="new-user" placeholder="Username" onSave={this._onSave}/>);
       }
     }
 
     return (
+      // I know, inline styles are a really bad practice, but I didn't want to lose time with this :)
       <section id="main">
-        <ul style={{'listStyle': '', 'left': '45%', 'position': 'relative'}} id="user-list">{users}</ul>
+        <ul style={{'listStyle': '', 'left': '34%', 'position': 'relative'}}
+            id="user-list">{users}</ul>
+        <GroupInput id="new-group"
+                    placeholder="Create group" onSave={this._onSaveGroup}/>
       </section>
     );
   },
