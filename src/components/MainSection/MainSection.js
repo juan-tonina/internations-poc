@@ -68,7 +68,10 @@ const MainSection = React.createClass({
     }
 
     return (
-      // I know, inline styles are a really bad practice, but I didn't want to lose time with this :)
+      /**
+       * I know, inline styles are a really bad practice, but I didn't want to lose time with this :) the @WithStyles
+       * annotation only works with new classes, not React.createClass...
+       */
       <section id="main" style={{'marginTop': '5%'}}>
         <ul style={{'left': '37%', 'position': 'relative'}}
             id="user-list">{users}</ul>

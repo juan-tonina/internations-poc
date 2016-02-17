@@ -58,8 +58,9 @@ const UserItem = React.createClass({
           <label onDoubleClick={this._onDoubleClick}>
             {user.text}
           </label>
-          <button style={{'marginRight': '82%', 'float': 'right', 'backgroundColor': 'red', 'height': '1em'}}
-                  onClick={this._onDestroyClick}/>
+          <button
+            style={{'marginRight': '82%', 'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'height': '1em'}}
+            onClick={this._onDestroyClick}/>
         </div>
         {input}
       </li>

@@ -11,14 +11,18 @@ const _users = {};
 /**
  * Create a User.
  * @param  {string} text The username of the User
+ * @param group
  */
 function create(text, group) {
   const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-  _users[id] = {
-    id: id,
-    text: text,
-  };
-  GroupStore.addUser(group, _users[id]);
+  if (!_.find(_users, (user) => user.text === text)) {
+    _users[id] = {
+      id: id,
+      text: text,
+    };
+    GroupStore.addUser(group, _users[id]);
+  }
+  // else { bla bla bla, return and handle error on frontend (same as in groupStore)}
 }
 
 /**
@@ -57,7 +61,7 @@ function destroy(id) {
 
 const UserStore = assign({}, EventEmitter.prototype, {
 
-   /**
+  /**
    * Get the entire collection of Users.
    * @return {object}
    */

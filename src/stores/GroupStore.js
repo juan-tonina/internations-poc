@@ -9,16 +9,19 @@ const CHANGE_EVENT = 'change';
 const _groups = {};
 
 /**
- * Create a Group.
+ * Create a Group. Checks if the group is repeated (This should be done on the backend, so I just implemented a !find
  * @param  {string} text The name of the Group
  */
 function create(text) {
   const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-  _groups[id] = {
-    id: id,
-    users: [],
-    text: text,
-  };
+  if (!_.find(_groups, (group) => group.text === text)) {
+    _groups[id] = {
+      id: id,
+      users: [],
+      text: text,
+    };
+    // else {return error and handle on frontend (this is replacing the API) }
+  }
 }
 
 /**

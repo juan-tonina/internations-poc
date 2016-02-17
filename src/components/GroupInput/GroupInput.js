@@ -29,7 +29,9 @@ const GroupInput = React.createClass({
    * used in different ways.
    */
   _save() {
-    this.props.onSave(this.state.value, this.state.group);
+    const value = this.state.value;
+    const string = value.charAt(0).toUpperCase() + value.slice(1);
+    this.props.onSave(string, this.state.group);
     this.setState({
       value: '',
       group: this.state.group,
