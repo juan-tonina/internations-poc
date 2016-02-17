@@ -16,6 +16,11 @@ libraries.
 
 This POC was created using a react starter kit. 
 
+
+#### Incomplete list of TODO's:
+
+- Change the dashboard (if you add enough users or groups, it goes through the footer and it messes everything up)
+
 ### "List what API endpoints would you expect your backend to implement."
 
  _I would expect a Restful API, probably using OAuth_
