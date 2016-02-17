@@ -64,17 +64,18 @@ const GroupInput = React.createClass({
   render() {
     return (
 
-        <input style={{'marginTop': '5%', 'width': '30%', 'left': '34%', 'position': 'relative'}}
-               className={this.props.className}
-               id={this.props.id}
-               placeholder={this.props.placeholder}
-               onBlur={this._save}
-               onChange={this._onChange}
-               onKeyDown={this._onKeyDown}
-               value={this.state.value}
-               autoFocus={true}
-        />
-     );
+      <input
+        style={{'outline': 'none', 'borderRadius': '8px', 'borderStyle': 'groove', 'marginTop': '5%', 'width': '30%', 'left': '34%', 'position': 'relative'}}
+        className={this.props.className}
+        id={this.props.id}
+        placeholder={this.props.placeholder}
+        onBlur={this._save}
+        onChange={this._onChange}
+        onKeyDown={this._onKeyDown}
+        value={this.state.value}
+        autoFocus={true}
+      />
+    );
   },
 });
 
