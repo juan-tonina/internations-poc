@@ -32,8 +32,11 @@ const MainSection = React.createClass({
   render() {
     let byGroup;
     if (Object.keys(this.props.groupStore.getAll()).length < 1) {
-      return (<GroupInput id="new-group"
-                          placeholder="Create group" onSave={this._onSaveGroup}/>);
+      return ( // I know, inline styles are a bad practice, but I didn't want to lose time with this :)
+        <section style={{'minHeight': '500px'}}>
+          <GroupInput id="new-group"
+                      placeholder="Create group" onSave={this._onSaveGroup}/>
+        </section>);
     }
 
     const groupStore = this.props.groupStore;
@@ -42,8 +45,7 @@ const MainSection = React.createClass({
     const all = groupStore.getAll();
     /**
      * This is going to iterate through groups and users. I don't really like to iterate using for..in,
-     * but here it seemed cleaner. (I know that iterating over arrays with for..in not only is slower tan regular
-     * for loops, but in v8 it can cause the whole function to not be optimized)
+     * but here it seemed cleaner. The whole block is messy, though.
      */
     for (const group in all) {
       if (all.hasOwnProperty(group)) {
@@ -54,7 +56,8 @@ const MainSection = React.createClass({
             users.push(<UserItem key={key + group} user={byGroup.users[key]}/>);
           }
         }
-        users.push(<UserInput key={'_' + group} group={group} id="new-user" placeholder="Username" onSave={this._onSave}/>);
+        users.push(<UserInput key={'_' + group} group={group} id="new-user" placeholder="Username"
+                              onSave={this._onSave}/>);
       }
     }
 

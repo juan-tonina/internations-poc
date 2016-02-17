@@ -50,23 +50,14 @@ function updateAll(updates) {
  */
 function destroy(id) {
   delete _users[id];
+  // This is messy too, but it was more a bug fix than an idea. Again, there is probably a much better way to do this
+  GroupStore.deleteFromGroups(id);
 }
 
 
 const UserStore = assign({}, EventEmitter.prototype, {
 
-  areAllComplete() {
-    for (const id in _users) {
-      if (_users.hasOwnProperty(id)) {
-        if (!_users[id].complete) {
-          return false;
-        }
-      }
-    }
-    return true;
-  },
-
-  /**
+   /**
    * Get the entire collection of Users.
    * @return {object}
    */

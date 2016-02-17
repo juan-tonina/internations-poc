@@ -2,6 +2,7 @@ const AppDispatcher = require('../../src/core/Dispatcher');
 const EventEmitter = require('events').EventEmitter;
 const GroupConstants = require('../constants/GroupConstants');
 const assign = require('object-assign');
+const _ = require('lodash');
 
 const CHANGE_EVENT = 'change';
 
@@ -57,6 +58,17 @@ const GroupStore = assign({}, EventEmitter.prototype, {
 
   addUser(group, user) {
     _groups[group].users.push(user);
+  },
+
+  extracted(group, id) {
+    _.remove(_groups[group].users, (user) => user.id === id);
+  },
+  deleteFromGroups(id) {
+    for (const group in _groups) {
+      if (_groups.hasOwnProperty(group)) {
+        this.extracted(group, id);
+      }
+    }
   },
 
   /**
