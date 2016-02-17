@@ -55,7 +55,8 @@ const MainSection = React.createClass({
       if (all.hasOwnProperty(group)) {
         // I wanted this to be collapsible, but I didn't have the time to actually do it.
         users.push(<li key={group}
-                       style={{'listStyle': 'none', 'fontWeight': 'bold', 'fontSize': 'larger'}}>{all[group].text}</li>);
+                       style={{'listStyle': 'none', 'fontWeight': 'bold', 'fontSize': 'larger', 'margin': 'auto',
+                        'width': '50%'}}>{all[group].text}</li>);
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
           if (byGroup.users.hasOwnProperty(key)) {

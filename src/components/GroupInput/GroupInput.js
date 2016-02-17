@@ -67,7 +67,7 @@ const GroupInput = React.createClass({
     return (
 
       <input
-        style={{'outline': 'none', 'borderRadius': '8px', 'borderStyle': 'groove',}}
+        style={{'width': '50%', 'outline': 'none', 'borderRadius': '8px', 'borderStyle': 'groove',}}
         className={this.props.className}
         id={this.props.id}
         placeholder={this.props.placeholder}
