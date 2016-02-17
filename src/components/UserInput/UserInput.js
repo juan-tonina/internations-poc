@@ -56,14 +56,14 @@ const UserInput = React.createClass({
 
   /**
    * This is going to create the user on blur. There is currently no way of cancelling the creation, I should have
-   * added a button (but this being a proof of concept, it seemed unnecessary
+   * added a button.
    * @return {object}
    */
   render() {
     return (
       <input
-        style={{'outline': 'none', 'borderRadius': '8px', 'borderStyle': 'groove', 'marginTop': '5%', 'width': '20%', 'left': '40%'}}
-        className={this.props.className}
+        style={{ 'outline': 'none', 'borderRadius': '8px',
+         'borderStyle': 'groove', 'width': '20%', 'left': '40%'}}
         id={this.props.id}
         placeholder={this.props.placeholder}
         onBlur={this._save}

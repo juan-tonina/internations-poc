@@ -33,7 +33,7 @@ const MainSection = React.createClass({
     let byGroup;
     if (Object.keys(this.props.groupStore.getAll()).length < 1) {
       return ( // I know, inline styles are a bad practice, but I didn't want to lose time with this :)
-        <section style={{'minHeight': '500px'}}>
+        <section style={{'minHeight': '500px', 'marginTop': '5%'}}>
           <GroupInput id="new-group"
                       placeholder="Create group" onSave={this._onSaveGroup}/>
         </section>);
@@ -49,7 +49,8 @@ const MainSection = React.createClass({
      */
     for (const group in all) {
       if (all.hasOwnProperty(group)) {
-        users.push(<li key={group} style={{'listStyle': 'none'}}>{'->' + all[group].text}</li>);
+        users.push(<li key={group}
+                       style={{'listStyle': 'none', 'fontWeight': 'bold', 'fontSize': 'larger'}}>{all[group].text}</li>);
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
           if (byGroup.users.hasOwnProperty(key)) {
@@ -63,8 +64,8 @@ const MainSection = React.createClass({
 
     return (
       // I know, inline styles are a really bad practice, but I didn't want to lose time with this :)
-      <section id="main">
-        <ul style={{'listStyle': '', 'left': '34%', 'position': 'relative'}}
+      <section id="main" style={{'marginTop': '5%'}}>
+        <ul style={{'left': '37%', 'position': 'relative'}}
             id="user-list">{users}</ul>
         <GroupInput id="new-group"
                     placeholder="Create group" onSave={this._onSaveGroup}/>

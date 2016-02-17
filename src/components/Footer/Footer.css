@@ -1,10 +1,13 @@
 /* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
 @import '../variables.css';
 
 .Footer {
   background: #333;
   color: #fff;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .Footer-container {
