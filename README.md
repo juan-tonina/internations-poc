@@ -2,7 +2,29 @@
 
 User management system for Internations. Using Reactjs and Es6.
 
-This POC was created using [react-starter-kit](https://github.com/kriasoft/react-starter-kit). 
+
+My reasons to choose Reactjs were many, but the most important one was that I wanted to take advantage of this POC,
+not only creating some small app but learning a new library that I might be using in Internations. 
+
+The reasons for es6 are very similar, but also because it is what I'm used to.
+
+I followed the approach of creating an "admin dashboard", because I wanted to explore the concept of Component Based UI,
+so you might find that I took some liberties in terms of UX. You will also find several todo's; but the point is that 
+it has a sample of every functionality (navigation, creation, deletion, etc.) and a solid architecture based on the 
+best practices found on the very little (good) documentation that you can find, compared with other frameworks or 
+libraries.
+
+This POC was created using a react starter kit. 
+
+### "List what API endpoints would you expect your backend to implement."
+
+ _I would expect a Restful API, probably using OAuth_
+ 
+ - /Login
+ - /User (GET, POST, PUT) (Add and edit can use different http methods, and send the id in the body of the request)
+ - /User/Id (GET, DELETE)
+ - /Group (GET, POST, PUT) 
+ - /Group/Id (GET, DELETE)(PUT: add or remove user)
 
 -----
 
@@ -44,7 +66,7 @@ This POC was created using [react-starter-kit](https://github.com/kriasoft/react
 
 ### Getting Started
 
-Just clone the repo and start hacking:
+Just clone the repo and install dependencies:
 
 ```shell
 $ git clone https://github.com/juan-tonina/internations-poc.git MyApp
@@ -80,7 +102,7 @@ $ npm run deploy                # or, `npm run deploy -- production`
 
 For more information see `tools/deploy.js`.
 
-### How to Test
+### How to Test (there are no tests, but the app is prepared for them :) )  
 
 Run unit tests powered by [Jest](https://facebook.github.io/jest/) with the following
 [npm](https://www.npmjs.org/doc/misc/npm-scripts.html) command:

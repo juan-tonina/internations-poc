@@ -55,6 +55,8 @@ const UserInput = React.createClass({
 
 
   /**
+   * This is going to create the user on blur. There is currently no way of cancelling the creation, I should have
+   * added a button (but this being a proof of concept, it seemed unnecessary
    * @return {object}
    */
   render() {
