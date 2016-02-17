@@ -9,7 +9,9 @@ not only creating some small app but learning a new library that I might be usin
 The reasons for es6 are very similar, but also because it is what I'm used to.
 
 I followed the approach of creating an "admin dashboard", because I wanted to explore the concept of Component Based UI,
-so you might find that I took some liberties in terms of UX. You will also find several todo's; but the point is that 
+and because I didn't want to mock persistence (it would have been a waste of time, since it wouldn't have added anything
+to the proof of concept, hardly a realistic scenario) so you might find that I took some liberties in terms of UX.
+You will also find several todo's; but the point is that 
 it has a sample of every functionality (navigation, creation, deletion, etc.) and a solid architecture based on the 
 best practices found on the very little (good) documentation that you can find, compared with other frameworks or 
 libraries.
@@ -20,6 +22,7 @@ This POC was created using a react starter kit.
 #### Incomplete list of TODO's:
 
 - Change the dashboard (if you add enough users or groups, it goes through the footer and it messes everything up)
+- Mock persistence, maybe using localStorage or something like that.
 
 ### "List what API endpoints would you expect your backend to implement."
 
