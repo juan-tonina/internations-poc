@@ -46,9 +46,14 @@ const MainSection = React.createClass({
     /**
      * This is going to iterate through groups and users. I don't really like to iterate using for..in,
      * but here it seemed cleaner. The whole block is messy, though.
+     *
+     * Oh! and I know that if you are an admin this list cannot possibly be empty, ever. But part of the pdf with
+     * the use cases stated that "a user cannot exist without having at least one group", so I assumed that the admin
+     * didn't count as a group/user.
      */
     for (const group in all) {
       if (all.hasOwnProperty(group)) {
+        // I wanted this to be collapsible, but I didn't have the time to actually do it.
         users.push(<li key={group}
                        style={{'listStyle': 'none', 'fontWeight': 'bold', 'fontSize': 'larger'}}>{all[group].text}</li>);
         byGroup = groupStore.getByGroup(group);
