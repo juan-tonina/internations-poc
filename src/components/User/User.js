@@ -51,15 +51,15 @@ const UserItem = React.createClass({
 
     // I know, I know, inline styles...
     return (
-      <li style={{'marginLeft': '30px'}}
+      <li style={{'margin': 'auto', 'width': '10%'}}
           className={classNames({ 'completed': user.complete, 'editing': this.state.isEditing, })}
           key={user.id}>
-        <div className="view">
+        <div className="view" style={{'textAlign': 'left'}}>
           <label onDoubleClick={this._onDoubleClick}>
             {user.text}
           </label>
           <button
-            style={{'marginRight': '82%', 'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'height': '1em'}}
+            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'height': '1em'}}
             onClick={this._onDestroyClick}/>
         </div>
         {input}

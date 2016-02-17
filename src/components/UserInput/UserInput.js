@@ -62,8 +62,7 @@ const UserInput = React.createClass({
   render() {
     return (
       <input
-        style={{ 'outline': 'none', 'borderRadius': '8px',
-         'borderStyle': 'groove', 'width': '20%', 'left': '40%'}}
+        style={{ 'outline': 'none', 'borderRadius': '8px', 'borderStyle': 'groove'}}
         id={this.props.id}
         placeholder={this.props.placeholder}
         onBlur={this._save}
