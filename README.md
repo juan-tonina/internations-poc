@@ -16,7 +16,7 @@ it has a sample of every functionality (navigation, creation, deletion, etc.) an
 best practices found on the very little (good) documentation that you can find, compared with other frameworks or 
 libraries.
 
-This POC was created using a react starter kit. 
+This POC was created using a react starter kit. I used eslint, that's why I have so many trailing commas... I hate them
 
 
 #### Incomplete list of TODO's:

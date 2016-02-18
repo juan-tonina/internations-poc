@@ -29,7 +29,9 @@ const UserInput = React.createClass({
    * used in different ways.
    */
   _save() {
-    this.props.onSave(this.state.value, this.props.group);
+    const value = this.state.value;
+    const string = value.charAt(0).toUpperCase() + value.slice(1);
+    this.props.onSave(string, this.props.group);
     this.setState({
       value: '',
     });
