@@ -64,7 +64,7 @@ const UserItem = React.createClass({
           className={classNames({ 'completed': user.complete, 'editing': this.state.isEditing})}
           key={user.id}>
         <div className="view" style={{'textAlign': 'left'}}>
-          <label onDoubleClick={this._onDoubleClick}>
+          <label>
             {user.text}
           </label>
           <button
