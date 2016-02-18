@@ -55,11 +55,15 @@ const MainSection = React.createClass({
      */
     for (const group in all) {
       if (all.hasOwnProperty(group)) {
-        // I wanted this to be collapsible, but I didn't have the time to actually do it.
+        /**
+         * I wanted this to be collapsible, but I didn't have the time to actually do it.
+         *
+         * Oh! and I know that this should be inside the component (pretty much like UserItem, but I'm tired
+         * and its working.
+         */
         users.push(<li key={group}
                        style={{'listStyle': 'none', 'fontWeight': 'bold', 'fontSize': 'larger', 'margin': 'auto',
-                        'width': '50%'}}>{all[group].text}</li>);
-        users.push(<GroupItem key={'item_' + group} group={group}/>);
+                        'width': '50%'}}>{all[group].text}<GroupItem key={'item_' + group} group={group}/></li>);
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
           if (byGroup.users.hasOwnProperty(key)) {
