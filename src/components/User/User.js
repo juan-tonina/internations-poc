@@ -68,7 +68,7 @@ const UserItem = React.createClass({
             {user.text}
           </label>
           <button
-            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'fontSize': '70%', 'color': 'white'}}
+            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'dodgerblue', 'fontSize': '70%', 'color': 'white'}}
             onClick={this._onRemoveClick}>Remove</button>
           <button
             style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'fontSize': '70%', 'color': 'white'}}
