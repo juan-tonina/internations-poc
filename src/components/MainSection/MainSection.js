@@ -6,6 +6,7 @@ const UserItem = require('../User/User');
 const UserInput = require('../UserInput/UserInput');
 const UserSelect = require('../UserSelect/UserSelect');
 const GroupInput = require('../GroupInput/GroupInput');
+const GroupItem = require('../Group/Group');
 
 const MainSection = React.createClass({
 
@@ -58,6 +59,7 @@ const MainSection = React.createClass({
         users.push(<li key={group}
                        style={{'listStyle': 'none', 'fontWeight': 'bold', 'fontSize': 'larger', 'margin': 'auto',
                         'width': '50%'}}>{all[group].text}</li>);
+        users.push(<GroupItem key={'item_' + group} group={group}/>);
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
           if (byGroup.users.hasOwnProperty(key)) {
@@ -67,7 +69,7 @@ const MainSection = React.createClass({
         users.push(<UserInput key={'_' + group} group={group} id="new-user" placeholder="Username"
                               onSave={this._onSave}/>);
         users.push(<UserSelect key={'select_' + group} group={group} id="new-user" placeholder="Username"
-                              onSave={this._onSave}/>);
+                               onSave={this._onSave}/>);
       }
     }
 

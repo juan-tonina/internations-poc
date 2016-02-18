@@ -52,7 +52,7 @@ const UserItem = React.createClass({
     // I know, I know, inline styles...
     return (
       <li style={{'margin': 'auto', 'width': '45%', 'backgroundColor': 'aliceblue'}}
-          className={classNames({ 'completed': user.complete, 'editing': this.state.isEditing, })}
+          className={classNames({ 'completed': user.complete, 'editing': this.state.isEditing})}
           key={user.id}>
         <div className="view" style={{'textAlign': 'left'}}>
           <label onDoubleClick={this._onDoubleClick}>
