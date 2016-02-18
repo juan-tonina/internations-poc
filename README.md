@@ -23,6 +23,8 @@ This POC was created using a react starter kit. I used eslint, that's why I have
 
 - Change the dashboard (if you add enough users or groups, it goes through the footer and it messes everything up)
 - Mock persistence, maybe using localStorage or something like that.
+- Search functionality (need to persist data first).
+- Improve dashboard functionality and styles. 
 
 ### "List what API endpoints would you expect your backend to implement."
 
@@ -33,6 +35,9 @@ This POC was created using a react starter kit. I used eslint, that's why I have
  - /User/Id (GET, DELETE)
  - /Group (GET, POST, PUT) 
  - /Group/Id (GET, DELETE)(PUT: add or remove user)
+ - /Dashboard ? Actually I thought of making the groups on the dashboard collapsible, so may be I could defer the
+ requests and send a GET request to /Group/Id when the user clicks and expands a group.
+ 
 
 -----
 
