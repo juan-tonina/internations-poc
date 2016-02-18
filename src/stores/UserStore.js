@@ -14,7 +14,7 @@ const _users = {};
  * @param group
  */
 function create(text, group) {
-  const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+  const id = text; // This is going to be unique anyways, could actually remove the id
   if (!_.find(_users, (user) => user.text === text)) {
     _users[id] = {
       id: id,

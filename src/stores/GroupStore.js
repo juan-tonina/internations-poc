@@ -13,7 +13,7 @@ const _groups = {};
  * @param  {string} text The name of the Group
  */
 function create(text) {
-  const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+  const id = text; // Unique stuff, so no need to actually use that awful (default) id generator of the starter kit
   if (!_.find(_groups, (group) => group.text === text)) {
     _groups[id] = {
       id: id,
@@ -57,10 +57,18 @@ function destroy(id) {
   }
 }
 
+// Why? Because I'm trying to avoid creating an action
+let emitCustomChange;
+
 const GroupStore = assign({}, EventEmitter.prototype, {
 
   addUser(group, user) {
-    _groups[group].users.push(user);
+    // More validation that should be on the server
+    if (!_.find(_groups[group].users, (us) => us.id === user.id)) {
+      _groups[group].users.push(user);
+      // noinspection JSUnusedAssignment
+      emitCustomChange();
+    }
   },
 
   extracted(group, id) {
@@ -104,7 +112,9 @@ const GroupStore = assign({}, EventEmitter.prototype, {
     this.removeListener(CHANGE_EVENT, callback);
   },
 });
-
+emitCustomChange = () => {
+  GroupStore.emitChange();
+};
 // Register callback to handle all updates
 AppDispatcher.register((action) => {
   let text;

@@ -4,6 +4,7 @@ const UserActions = require('../../actions/UserActions');
 const GroupActions = require('../../actions/GroupActions');
 const UserItem = require('../User/User');
 const UserInput = require('../UserInput/UserInput');
+const UserSelect = require('../UserSelect/UserSelect');
 const GroupInput = require('../GroupInput/GroupInput');
 
 const MainSection = React.createClass({
@@ -64,6 +65,8 @@ const MainSection = React.createClass({
           }
         }
         users.push(<UserInput key={'_' + group} group={group} id="new-user" placeholder="Username"
+                              onSave={this._onSave}/>);
+        users.push(<UserSelect key={'select_' + group} group={group} id="new-user" placeholder="Username"
                               onSave={this._onSave}/>);
       }
     }
