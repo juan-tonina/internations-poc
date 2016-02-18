@@ -2,6 +2,7 @@ import keyMirror from 'fbjs/lib/keyMirror';
 
 module.exports = keyMirror({
   USER_CREATE: null,
+  USER_REMOVE: null,
   USER_COMPLETE: null,
   USER_DESTROY: null,
   USER_DESTROY_COMPLETED: null,

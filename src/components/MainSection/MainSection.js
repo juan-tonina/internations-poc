@@ -67,7 +67,7 @@ const MainSection = React.createClass({
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
           if (byGroup.users.hasOwnProperty(key)) {
-            users.push(<UserItem key={key + group} user={byGroup.users[key]}/>);
+            users.push(<UserItem key={key + group} user={byGroup.users[key]} group={group}/>);
           }
         }
         users.push(<UserInput key={'_' + group} group={group} id="new-user" placeholder="Username"

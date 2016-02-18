@@ -1,5 +1,6 @@
 import keyMirror from 'fbjs/lib/keyMirror';
 
+// Yes, this is how it's done
 module.exports = keyMirror({
   GROUP_CREATE: null,
   GROUP_COMPLETE: null,

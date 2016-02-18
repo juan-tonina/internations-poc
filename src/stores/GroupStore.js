@@ -71,13 +71,13 @@ const GroupStore = assign({}, EventEmitter.prototype, {
     }
   },
 
-  extracted(group, id) {
+  removeUser(group, id) {
     _.remove(_groups[group].users, (user) => user.id === id);
   },
   deleteFromGroups(id) {
     for (const group in _groups) {
       if (_groups.hasOwnProperty(group)) {
-        this.extracted(group, id);
+        this.removeUser(group, id);
       }
     }
   },

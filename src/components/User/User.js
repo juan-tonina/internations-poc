@@ -12,6 +12,7 @@ const UserItem = React.createClass({
 
   propTypes: {
     user: ReactPropTypes.object.isRequired,
+    group: ReactPropTypes.string.isRequired,
   },
 
   getInitialState() {
@@ -31,6 +32,14 @@ const UserItem = React.createClass({
 
   _onDestroyClick() {
     UserActions.destroy(this.props.user.id);
+  },
+
+  /**
+   * This should be a groupAction, actually
+   * @private
+     */
+  _onRemoveClick() {
+    UserActions.removeUser(this.props.user.id, this.props.group);
   },
 
   /**
@@ -59,8 +68,11 @@ const UserItem = React.createClass({
             {user.text}
           </label>
           <button
-            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'height': '1em'}}
-            onClick={this._onDestroyClick}/>
+            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'fontSize': '70%', 'color': 'white'}}
+            onClick={this._onRemoveClick}>Remove</button>
+          <button
+            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'fontSize': '70%', 'color': 'white'}}
+            onClick={this._onDestroyClick}>Delete</button>
         </div>
         {input}
       </li>

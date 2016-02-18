@@ -25,6 +25,13 @@ function create(text, group) {
   // else { bla bla bla, return and handle error on frontend (same as in groupStore)}
 }
 
+
+// Yeah, should have been a group action
+function removeUser(user, group) {
+  GroupStore.removeUser(group, user);
+}
+
+
 /**
  * Update a User.
  * @param  {string} id
@@ -35,18 +42,6 @@ function update(id, updates) {
   _users[id] = assign({}, _users[id], updates);
 }
 
-/**
- * Update all of the Users with the same object.
- * @param  {object} updates An object literal containing only the data to be
- *     updated.
- */
-function updateAll(updates) {
-  for (const id in _users) {
-    if (_users.hasOwnProperty(id)) {
-      update(id, updates);
-    }
-  }
-}
 
 /**
  * Delete a User.
@@ -101,12 +96,8 @@ AppDispatcher.register((action) => {
       }
       break;
 
-    case UserConstants.USER_TOGGLE_COMPLETE_ALL:
-      if (UserStore.areAllComplete()) {
-        updateAll({complete: false});
-      } else {
-        updateAll({complete: true});
-      }
+    case UserConstants.USER_REMOVE:
+      removeUser(action.user, action.group);
       UserStore.emitChange();
       break;
 

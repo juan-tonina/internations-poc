@@ -28,6 +28,19 @@ const UserActions = {
   },
 
   /**
+   *
+   * @param user
+   * @param group
+   */
+  removeUser(user, group) {
+    AppDispatcher.dispatch({
+      actionType: UserConstants.USER_REMOVE,
+      user: user,
+      group: group,
+    });
+  },
+
+  /**
    * @param user
    */
   toggleComplete(user) {

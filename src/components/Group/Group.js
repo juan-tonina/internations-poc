@@ -37,8 +37,8 @@ const GroupItem = React.createClass({
     // I know, I know, inline styles...
     return (
       <button
-        style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'height': '1em'}}
-        onClick={this._onDestroyClick}/>
+        style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'fontSize': 'small', 'fontWeight': 'bold', 'color': 'white'}}
+        onClick={this._onDestroyClick}>Delete</button>
     );
   },
 
