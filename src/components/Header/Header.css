@@ -1,5 +1,4 @@
 /* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
 @import '../variables.css';
 
 :root {
@@ -9,6 +8,19 @@
 .Header {
   background: #373277;
   color: #fff;
+}
+
+section {
+
+  margin-top: 5%;
+  margin-left: auto;
+  text-align: center;
+  width: 50%;
+  margin-right: auto;
+  border-radius: 16px;
+  border: groove #373277;
+  padding-bottom: 5%;
+  padding-top: 5%
 }
 
 .Header-container {

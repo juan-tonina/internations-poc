@@ -35,11 +35,7 @@ const MainSection = React.createClass({
     let byGroup;
     if (Object.keys(this.props.groupStore.getAll()).length < 1) {
       return ( // I know, inline styles are a bad practice, but I didn't want to lose time with this :)
-        <section style={{
-          'marginTop': '5%', 'marginLeft': 'auto', 'textAlign': 'center', 'width': '50%',
-          'marginRight': 'auto', 'borderRadius': '16px', 'borderStyle': 'groove',
-          'borderColor': '#373277', 'paddingBottom': '5%', 'paddingTop': '5%'
-        }}>
+        <section>
           <GroupInput id="new-group"
                       placeholder="Create group" onSave={this._onSaveGroup}/>
         </section>);
@@ -86,10 +82,7 @@ const MainSection = React.createClass({
      * I know, inline styles are a really bad practice, but I didn't want to lose time with this :) the @WithStyles
      * annotation only works with new classes, not React.createClass...
      */
-      <section id="main"
-               style={{ 'marginTop': '5%', 'marginLeft': 'auto', 'textAlign': 'center', 'width': '50%',
-                'marginRight': 'auto', 'borderRadius': '16px', 'borderStyle': 'groove',
-                 'borderColor': '#373277', 'paddingBottom': '5%', 'paddingTop': '5%' }}>
+      <section id="main">
         <ul id="user-list" style={{'padding': '0'}}>{users}</ul>
         <GroupInput id="new-group"
                     placeholder="Create group" onSave={this._onSaveGroup}/>
