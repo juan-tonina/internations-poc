@@ -62,8 +62,8 @@ const MainSection = React.createClass({
          * and its working.
          */
         users.push(<li key={group}
-                       style={{'listStyle': 'none', 'fontWeight': 'bold', 'fontSize': 'larger', 'margin': 'auto',
-                        'width': '50%'}}>{all[group].text}<GroupItem key={'item_' + group} group={group}/></li>);
+                       className="group-item">{all[group].text}<GroupItem key={'item_' + group} group={group}/>
+        </li>);
         byGroup = groupStore.getByGroup(group);
         for (const key in byGroup.users) {
           if (byGroup.users.hasOwnProperty(key)) {

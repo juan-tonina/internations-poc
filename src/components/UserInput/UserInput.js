@@ -64,7 +64,7 @@ const UserInput = React.createClass({
   render() {
     return (
       <input
-        style={{ 'outline': 'none', 'width': '50%', 'borderRadius': '8px', 'borderStyle': 'groove'}}
+        className="user-input"
         id={this.props.id}
         placeholder={this.props.placeholder}
         onBlur={this._save}
@@ -72,7 +72,7 @@ const UserInput = React.createClass({
         onKeyDown={this._onKeyDown}
         value={this.state.value}
         group={this.props.group}
-        autoFocus={true}
+        autoFocus
       />
     );
   },

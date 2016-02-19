@@ -23,6 +23,60 @@ section {
   padding-top: 5%
 }
 
+.group-item {
+  list-style: none;
+  font-weight: bold;
+  font-size: larger;
+  margin: auto;
+
+  width: 50%
+}
+
+.button-delete-group {
+  border-radius: 10px;
+  float: right;
+  background-color: red;
+  font-size: small;
+  font-weight: bold;
+  color: white
+}
+
+.user-input {
+  outline: none;
+  width: 50%;
+  border-radius: 8px;
+  border-style: groove
+}
+
+.user-item {
+  margin: auto;
+  width: 45%;
+  background-color: aliceblue
+}
+
+.remove-button-user {
+  border-radius: 10px;
+  float: right;
+  background-color: dodgerblue;
+  font-size: 70%;
+  color: white
+}
+
+.delete-button-user {
+  border-radius: 10px;
+  float: right;
+  background-color: red;
+  font-size: 70%;
+  color: white
+}
+
+.group-input {
+  width: 50%;
+  outline: none;
+  border-radius: 8px;
+  border-style: groove
+}
+
 .Header-container {
   margin: 0 auto;
   padding: 20px 0;

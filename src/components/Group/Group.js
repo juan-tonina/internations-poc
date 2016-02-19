@@ -34,10 +34,9 @@ const GroupItem = React.createClass({
    * @return {object}
    */
   render() {
-    // I know, I know, inline styles...
     return (
       <button
-        style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'fontSize': 'small', 'fontWeight': 'bold', 'color': 'white'}}
+        className="button-delete-group"
         onClick={this._onDestroyClick}>Delete</button>
     );
   },

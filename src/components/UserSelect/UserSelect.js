@@ -79,7 +79,7 @@ const UserSelect = React.createClass({
     users.push(<option key={'new!' + this.props.group} value="">New</option>);
     return (
       <select
-        style={{ 'outline': 'none', 'width': '50%', 'borderRadius': '8px', 'borderStyle': 'groove'}}
+        className="user-input"
         id={this.props.id}
         placeholder={this.props.placeholder}
         onChange={this._onChange}

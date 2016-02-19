@@ -37,7 +37,7 @@ const UserItem = React.createClass({
   /**
    * This should be a groupAction, actually
    * @private
-     */
+   */
   _onRemoveClick() {
     UserActions.removeUser(this.props.user.id, this.props.group);
   },
@@ -60,19 +60,20 @@ const UserItem = React.createClass({
 
     // I know, I know, inline styles...
     return (
-      <li style={{'margin': 'auto', 'width': '45%', 'backgroundColor': 'aliceblue'}}
-          className={classNames({ 'completed': user.complete, 'editing': this.state.isEditing})}
+      <li className="user-item"
           key={user.id}>
         <div className="view" style={{'textAlign': 'left'}}>
           <label>
             {user.text}
           </label>
           <button
-            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'dodgerblue', 'fontSize': '70%', 'color': 'white'}}
-            onClick={this._onRemoveClick}>Remove</button>
+            className="remove-button-user"
+            onClick={this._onRemoveClick}>Remove
+          </button>
           <button
-            style={{'borderRadius': '10px', 'float': 'right', 'backgroundColor': 'red', 'fontSize': '70%', 'color': 'white'}}
-            onClick={this._onDestroyClick}>Delete</button>
+            className="delete-button-user"
+            onClick={this._onDestroyClick}>Delete
+          </button>
         </div>
         {input}
       </li>
